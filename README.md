@@ -26,7 +26,7 @@ At the heart of Poppin lies React and JavaScript, chosen for their versatility a
 
 ## MVP Features 😎
 - User reviews and ratings 
-- favorite locations
+- Favorite locations
 - Integration of social media content (Instagram, Tiktok, Youtube API)
 - Loading states
 
