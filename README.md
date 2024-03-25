@@ -42,7 +42,9 @@ Loading state templates:
 
 Redux
 - https://redux.js.org/
+  
 Vite
 - https://vitejs.dev/
+  
 Firebase
 - https://firebase.google.com/
