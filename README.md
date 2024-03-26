@@ -18,19 +18,20 @@ At the heart of Poppin lies React and JavaScript, chosen for their versatility a
 
 4. **Firebase** / **OAuth 2.0**: Leveraging Firebase's real-time database and authentication services, Poppin enhances user engagement and security, enabling seamless integration with Instagram and TikTok for accessing relevant social media content effortlessly.
    
-5. **Redux**: Redux provides a predictable state management solution for Poppin, enabling centralized and efficient management of application state. With Redux, Poppin ensures a consistent and reliable user experience across different components and interactions.
+5. **Redux**(Stretch Goal): Redux provides a predictable state management solution for Poppin, enabling centralized and efficient management of application state. With Redux, Poppin ensures a consistent and reliable user experience across different components and interactions.
 
 6. **React Router**: Facilitating fluid navigation within Poppin, React Router ensures that users can seamlessly explore the platform's wealth of features and functionalities with ease.
 
 7. **Styled Components**: Elevating the aesthetics of Poppin's user interface, Styled Components empowers us to create visually stunning components that captivate and engage users.
 
-## Features 😎
+## MVP Features 😎
 - User reviews and ratings 
-- favorite locations
-- Integration of social media content (instagram/ Tiktok API)
-- Business sign up
+- Favorite locations
+- Integration of social media content (Instagram, Tiktok, Youtube API)
 - Loading states
 
+## Stretch Goals
+- Business sign up
 
 ## Resources
 Icons/ fonts
