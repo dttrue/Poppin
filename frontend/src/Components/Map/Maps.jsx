@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import mapboxgl from "mapbox-gl";
-import MapboxDirections from '@mapbox/mapbox-gl-directions';
+// import MapboxDirections from '@mapbox/mapbox-gl-directions';
 
 
 const MapStyles = styled.div`
@@ -19,7 +19,7 @@ export default function Maps() {
 
     const successLocation = (position) => {
         const { latitude, longitude } = position.coords;
-        // Update currentLocation state
+
         setCurrentLocation(`${latitude},${longitude}`);
     
         // Create a new center object based on position
@@ -33,7 +33,7 @@ export default function Maps() {
 
     const errorLocation = () => {
         // Consider providing a user-friendly message or fallback action here
-        console.error("Geolocation failed");
+        console.error("Location could not be found...");
     };
 
 
