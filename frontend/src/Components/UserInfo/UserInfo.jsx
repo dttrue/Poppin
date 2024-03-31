@@ -2,24 +2,29 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, updateProfile } from "firebase/auth";
 
+// component for user information
 export default function UserInfo() {
+    // get authentication instance and current user
     const auth = getAuth();
     const user = auth.currentUser;
+    // state variables for editing mode, display name, and email
     const [editing, setEditing] = useState(false);
     const [displayName, setDisplayName] = useState(user.displayName || "");
     const [email, setEmail] = useState(user.email || "");
 
+    // function to handle edit button click
     const handleEdit = () => {
         setEditing(true);
     };
 
+    // function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await updateProfile(user, {
-                displayName: displayName,
+                displayName: displayName, // update user's display name
             });
-            setEditing(false);
+            setEditing(false); // exit editing mode
             console.log("User information updated successfully!");
         } catch (error) {
             console.error("Error updating user information:", error.message);
