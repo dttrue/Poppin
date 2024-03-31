@@ -6,7 +6,6 @@ import mapboxgl from "mapbox-gl";
 const MapStyles = styled.div`
     width: 40vw;
     height: 100vh;
-    margin-top: 70px;
 `;
 
 export default function Maps() {

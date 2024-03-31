@@ -21,6 +21,11 @@ export default function Home() {
         }
     }, [user]);
 
+    const MapContainer = styled.div`
+        display: flex;
+        position: sticky;
+    `;
+
     const HomePage = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -65,7 +70,9 @@ export default function Home() {
             </Column>
 
             <Column>
+            <MapContainer>
             <Maps />
+            </MapContainer>
                 <h1>2</h1>
             </Column>
 
