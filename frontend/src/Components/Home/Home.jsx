@@ -82,8 +82,8 @@ export default function Home() {
       <Column>
         <Title>What's Poppin' Near You</Title>
 
-        <p style={{color: 'white'}}>Created by: Gyancarlos Pinto, Anggel Plasencia and Andrew Thomas</p>
-        
+        <p style={{color: 'white'}}>Created by: <a href="https://github.com/GyancarlosPinto">Gyancarlos Pinto</a>, <a href="https://github.com/Angl99">Anggel Plasencia</a> and <a href="https://github.com/athomas227">Andrew Thomas</a></p>
+
         <LoremIpsum>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod risus eget
           laoreet rutrum. Donec at leo nec nunc aliquam consectetur. Aenean lacinia bibendum
