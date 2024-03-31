@@ -3,7 +3,20 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+// password validation function
+const isPasswordValid = (password) => {
+  // regex patterns for password requirements
+  const uppercaseRegex = /[A-Z]/;
+  const numberRegex = /[0-9]/;
+  const specialCharRegex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
 
+  // check if password meets all requirements
+  return (
+    uppercaseRegex.test(password) &&
+    numberRegex.test(password) &&
+    specialCharRegex.test(password)
+  );
+};
 
 // component for login form
 const LoginForm = () => {
@@ -67,8 +80,20 @@ const SignupForm = () => {
   // function to handle signup submission
   const handleSignup = async (e) => {
     e.preventDefault();
-    await signup(email, password) // try to signup using provided email and password
-    navigate('/');
+    // check if password meets requirements
+    if (!isPasswordValid(password)) {
+      alert(
+        'Password requires at least one uppercase letter, one number, and one special character.'
+      );
+      return;
+    }
+    // proceed with signup if password is valid
+    try {
+      await signup(email, password); // try to signup using provided email and password
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
