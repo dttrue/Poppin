@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const LoginForm = () => {
@@ -18,10 +19,10 @@ const LoginForm = () => {
 
 
   return (
-    <form onSubmit={handleLogin}>
+    <form style={{ margin: '40px' }} onSubmit={handleLogin}>
       <h2>Login</h2>
       <div>
-        <label>Username/Email:</label>
+        <label>Email:</label>
         <input
           type="text"
           value={email}
@@ -38,6 +39,9 @@ const LoginForm = () => {
           required
         />
       </div>
+
+      <Link to="/signup"><strong>Don't have an account?</strong></Link>
+
       <button type="submit">Login</button>
     </form>
   );
@@ -54,10 +58,10 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSignup}>
+    <form style={{ margin: '40px' }}onSubmit={handleSignup}>
       <h2>Sign Up</h2>
       <div>
-        <label>Username/Email:</label>
+        <label>Email:</label>
         <input
           type="text"
           value={email}

@@ -1,18 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Components/Home/Home'
 import Header from './Components/Header/Header'
 import Userinfo from './Components/UserInfo/UserInfo'
 import { SignupForm, LoginForm } from './Components/Auth/SignUp'
 
-function App() {
-
+export default function App() {
   return (
     <>
       <div>
         <Router>
           <Header />
-
-          <Link to='/' className="home-button">Home</Link>
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -25,5 +22,3 @@ function App() {
     </>
   )
 }
-
-export default App

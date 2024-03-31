@@ -33,8 +33,8 @@ export default function Home() {
 
     const Column = styled.div`
         border: 5px solid red;
-        height: 100vh;
-        width: 520px;
+        height: 97vh;
+        width: 500px;
     `;
 
     const PopupBackground = styled.div`
