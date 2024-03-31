@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
 import { getAuth } from "firebase/auth";
+import Maps from "../Map/Maps";
 
 
 export default function Home() {
@@ -64,6 +65,7 @@ export default function Home() {
             </Column>
 
             <Column>
+            <Maps />
                 <h1>2</h1>
             </Column>
 

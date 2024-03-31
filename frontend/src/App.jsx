@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './Components/Home/Home'
 import Header from './Components/Header/Header'
 import Maps from './Components/Map/Maps'
@@ -11,7 +11,6 @@ export default function App() {
       <div>
         <Router>
           <Header />
-          <Maps />
           <Link to='/' />
 
           <Routes>
