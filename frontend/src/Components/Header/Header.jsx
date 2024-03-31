@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
+import { useAuth } from "../../Context/AuthContext/AuthContext";
 
 export default function Header() {
+    const { currentUser, logout } = useAuth();
+
     const NavBar = styled.nav`
         position: fixed;
         top: 0;
@@ -13,6 +16,7 @@ export default function Header() {
         display: flex;
         align-items: center;
         padding: 0 15px;
+        justify-content: space-between;
         z-index: 3;
     `;
 
@@ -28,7 +32,6 @@ export default function Header() {
         button {     
             width: 50px;
             height: 50px;
-            margin-left: 200px;
             color: white;
             background-color: Transparent;
             background-repeat:no-repeat;
@@ -73,32 +76,41 @@ export default function Header() {
                         type="text"
                         name="act-search"
                         placeholder="enter an activity"
-                        // value={actSearch}
-                        // onChange={}
                     />
 
                     <input 
                         type="text"
                         name="loc-search"
                         placeholder="enter a location"
-                        // value={actSearch}
-                        // onChange={}
                     />
 
                     <input 
                         type="submit"
                         name="search-button"
                     />
-
                 </form>
 
-                <Link to="/login">
-                    <button>Login</button>
-                </Link>
+            </NavBarItems>
 
-                <Link to="/signup">
-                    <button>Signup</button>
-                </Link>
+            <NavBarItems>
+                {currentUser && (
+                    <Link to="/userinfo">
+                        <button>User Info</button>
+                    </Link>
+                )}
+
+                {currentUser ? (
+                    <button onClick={logout}>Sign out</button>
+                ) : (
+                    <>
+                        <Link to="/login">
+                            <button>Login</button>
+                        </Link>
+                        <Link to="/signup">
+                            <button>Signup</button>
+                        </Link>
+                    </>
+                )}
             </NavBarItems>
         </NavBar>
     )

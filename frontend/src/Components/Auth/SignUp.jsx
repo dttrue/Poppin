@@ -1,18 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { useAuth } from '../../Context/AuthContext/AuthContext';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useContext(AuthContext);
+
   const handleLogin = async (e) => {
     e.preventDefault(); 
     try {
       await login(email, password);
-      // Handle login success
+      console.log('Login successful');
     } catch (error) {
-      // Handle login error
+      console.error(error);
     }
   };
 
@@ -43,10 +43,11 @@ const LoginForm = ({ onSubmit }) => {
   );
 };
 
-const SignupForm = ({ onSubmit }) => {
+const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup } = useContext(AuthContext);
+
   const handleSignup = async (e) => {
     e.preventDefault();
     await signup(email, password)

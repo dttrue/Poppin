@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { app, auth } from "../../firebase/firebaseConfig";
+import { auth } from "../../firebase/firebaseConfig";
 import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword, doSignOut } from "../../firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -24,8 +24,6 @@ export const useAuth = () => {
       setCurrentUser(user);
       return user;
     };
-
-  
   
     const logout = () => {
       return doSignOut();
