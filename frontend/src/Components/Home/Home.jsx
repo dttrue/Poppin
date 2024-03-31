@@ -14,16 +14,16 @@ export default function Home() {
     if (!user) {
       const timer = setTimeout(() => {
         setShowPopup(true);
-      }, 5000); // 5000 milliseconds = 5 seconds
+      }, 2000); 
 
       return () => clearTimeout(timer);
     }
   }, [user]);
 
   const MapContainer = styled.div`
-    position: fixed; /* Position the map absolutely within HomePage */
-    width: 100%; /* Span the full viewport width */
-    height: 100%; /* Occupy the full viewport height */
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
     z-index: 0; /* Set a low z-index to keep the map behind the blur */
   `;
 

@@ -22,7 +22,8 @@ export default function Maps() {
         setCurrentLocation(`${latitude},${longitude}`);
     
         // Create a new center object based on position
-        const newCenter = [longitude, latitude]; // Mapbox uses [longitude, latitude]
+        // Mapbox uses [longitude, latitude]
+        const newCenter = [longitude, latitude]; 
     
         // Update the map center using setMap
         if (map) {
@@ -31,7 +32,7 @@ export default function Maps() {
       };
 
     const errorLocation = () => {
-        // Consider providing a user-friendly message or fallback action here
+        currentLocation
         console.error("Location could not be found...");
     };
 
