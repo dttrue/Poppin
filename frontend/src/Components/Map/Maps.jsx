@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import mapboxgl from "mapbox-gl";
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 
 
 const MapStyles = styled.div`
@@ -51,8 +52,8 @@ export default function Maps() {
         newMap.addControl(nav);  // Add control to the map
 
         const directions = new MapboxDirections({
-            accessToken: mapBoxApiKey   
-        });
+            accessToken: mapBoxApiKey,
+          });
         newMap.addControl(directions, 'top-left');
 
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
