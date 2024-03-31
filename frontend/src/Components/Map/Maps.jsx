@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import mapboxgl from "mapbox-gl";
-// import MapboxDirections from '@mapbox/mapbox-gl-directions';
 
 
 const MapStyles = styled.div`
@@ -35,7 +34,6 @@ export default function Maps() {
         // Consider providing a user-friendly message or fallback action here
         console.error("Location could not be found...");
     };
-
 
     useEffect(() => {
     if (mapContainer.current && !map) {
@@ -77,6 +75,6 @@ export default function Maps() {
     }, [mapBoxApiKey, map]);
 
     return (
-    <MapStyles ref={mapContainer} />
+        <MapStyles ref={mapContainer} />
     );
 }
