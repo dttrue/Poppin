@@ -61,7 +61,8 @@ export default function Header() {
     background-color: #fff; 
     border: 1px solid lightblue; 
     border-radius: 4px; 
-    padding: 2px 5px; 
+    padding: 2px 5px;
+    margin-left: 10px;
 `;
 
 
