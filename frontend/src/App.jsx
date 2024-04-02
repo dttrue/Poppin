@@ -11,7 +11,7 @@ export default function App() {
       <div>
         <Router>
           <Header />
-          <Link to='/' />
+          <Link to='/' /> {/*What is this line for?*/}
 
           <Routes>
             <Route path="/" element={<Home />} />
