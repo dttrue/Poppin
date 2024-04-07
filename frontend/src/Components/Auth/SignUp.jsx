@@ -25,7 +25,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // get the login function from AuthContext
-  const { login } = useContext(AuthContext);
+  const { login, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   
   // function to handle login submission
@@ -65,6 +65,10 @@ const LoginForm = () => {
       <Link to="/signup"><strong>Don't have an account?</strong></Link>
 
       <button type="submit">Login</button>
+
+      <button type="button" onClick={googleSignIn}>
+        Sign in with Google
+      </button>
     </form>
   );
 };
@@ -84,7 +88,7 @@ const SignupForm = () => {
   const [state, setState] = useState('');
   const [zip_code, setZipCode] = useState('');
   // get the signup function from AuthContext
-  const { signup } = useContext(AuthContext);
+  const { signup, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // function to handle signup submission
@@ -224,6 +228,12 @@ const SignupForm = () => {
           />
         </div>
       <button type="submit">Sign Up</button>
+
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+
+      <button onClick={googleSignIn}>Sign up with Google</button>
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 import { auth } from "../../firebase/firebaseConfig";
 import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword, doSignOut } from "../../firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -18,6 +18,17 @@ export const useAuth = () => {
       setCurrentUser(user);
       return user;
     };
+
+    const googleSignIn = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      setCurrentUser(result.user);
+      console.log('Google sign-in successful');
+    } catch (error) {
+      console.error('Google sign-in error:', error);
+    }
+  };
   
     const login = async (email, password) => {
       const user = await doSignInWithEmailAndPassword(email, password);
@@ -41,6 +52,7 @@ export const useAuth = () => {
     const value = {
       currentUser,
       signup,
+      googleSignIn,
       login,
       logout
     };

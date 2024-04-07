@@ -65,7 +65,6 @@ export default function Header() {
     margin-left: 10px;
 `;
 
-
   return (
     <NavBar>
       <Logo>
@@ -80,7 +79,7 @@ export default function Header() {
           <StyledInput
             type="text"
             name="act-search"
-            placeholder="enter an activity"
+            placeholder="What's Poppin'"
           />
           {/* <input type="text" name="loc-search" placeholder="enter a location" /> */}
           
@@ -90,7 +89,7 @@ export default function Header() {
 
       <NavBarItems>
         {currentUser && (
-          <Link to="/userinfo">
+          <Link to="/users">
             <button>User Info</button>
           </Link>
         )}
