@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import mapboxgl from "mapbox-gl";
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'; // Ensure this is the correct import
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
-
 
 const MapStyles = styled.div`
     width: 40vw;
@@ -10,72 +10,57 @@ const MapStyles = styled.div`
 `;
 
 export default function Maps() {
-    const mapBoxApiKey = process.env.REACT_APP_MAPBOX_API_KEY;
+    const mapBoxApiKey = import.meta.env.VITE_MAPBOX_API_KEY; // Correct access for Vite
     const [map, setMap] = useState(null);
     const mapContainer = useRef(null);
-    // Set Manhattan NYC as default location (longitude, latitude order)
-    const [currentLocation, setCurrentLocation] = useState([-73.985171, 40.758895]); 
+    const [currentLocation, setCurrentLocation] = useState([-73.985171, 40.758895]); // Manhattan NYC
 
     const successLocation = (position) => {
         const { latitude, longitude } = position.coords;
+        const newCenter = [longitude, latitude];
+        setCurrentLocation(newCenter); // Store new center
 
-        setCurrentLocation(`${latitude},${longitude}`);
-    
-        // Create a new center object based on position
-        // Mapbox uses [longitude, latitude]
-        const newCenter = [longitude, latitude]; 
-    
-        // Update the map center using setMap
         if (map) {
-          map.setCenter(newCenter);
+            map.setCenter(newCenter);
         }
-      };
+    };
 
     const errorLocation = () => {
-        currentLocation
         console.error("Location could not be found...");
     };
 
     useEffect(() => {
-    if (mapContainer.current && !map) {
+        if (mapContainer.current && !map && mapBoxApiKey) {
             mapboxgl.accessToken = mapBoxApiKey;
-
-            const newMap = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: "mapbox://styles/mapbox/streets-v11",
-            center: currentLocation,
-            zoom: 13,
-        });
-        setMap(newMap);
-
-        // Add the navigation control after creating the map
-        const nav = new mapboxgl.NavigationControl();
-        newMap.addControl(nav);  // Add control to the map
-
-        const directions = new MapboxDirections({
-            accessToken: mapBoxApiKey,
-          });
-        newMap.addControl(directions, 'top-left');
-
-        navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-            enableHighAccuracy: true
-        });
     
-    }
+            const initializeMap = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: "mapbox://styles/mapbox/streets-v11",
+                center: currentLocation,
+                zoom: 13,
+            });
+            setMap(initializeMap);
 
-    // Clean up the map instance on component unmount
-    return () => {
-        if (map) {
-        try {
-            map.remove();
-        } catch (error) {
-            console.error('Error removing map:', error);
-        }
-        }
-    };
-    }, [mapBoxApiKey, map]);
+            const nav = new mapboxgl.NavigationControl();
+            initializeMap.addControl(nav);
 
-    return (
-        <MapStyles ref={mapContainer} />
-    );
+            const directions = new MapboxDirections({
+                accessToken: mapBoxApiKey,
+            });
+            initializeMap.addControl(directions, 'top-left');
+
+            navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+                enableHighAccuracy: true
+            });
+        }
+
+        return () => { // Cleanup on unmount
+            if (map) {
+                map.remove();
+            }
+        };
+    }, [mapBoxApiKey, currentLocation]); // Dependency array
+
+    return <MapStyles ref={mapContainer} />;
 }
+
