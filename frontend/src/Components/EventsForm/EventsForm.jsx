@@ -1,9 +1,10 @@
-import eventsAPI from "../../Helpers/eventsHelper";
+import eventsAPI from "../../Helpers/eventsHepler";
 import axios from "axios";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 
 const EventsForm = ({ onSave }) => {
+    console.log("EventsForm rendering");
     const [formData, setFormData] = useState({
         title: '',
         description: '',
