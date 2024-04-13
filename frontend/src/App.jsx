@@ -3,12 +3,19 @@ import Home from './Components/Home/Home'
 import Header from './Components/Header/Header'
 import Userinfo from './Components/UserInfo/UserInfo'
 import { SignupForm, LoginForm } from './Components/Auth/SignUp'
+import EventsForm from './Components/EventsForm/EventsForm'
+
 
 export default function App() {
+
+
+  const handleSave = (event) => {
+    console.log(event)
+  }
   return (
     <>
       <div>
-        <Router>
+        {/* <Router>
           <Header />
 
           <Routes>
@@ -17,8 +24,14 @@ export default function App() {
             <Route path="/login" element={<LoginForm />} />
             <Route path="/users" element={<Userinfo />} />
           </Routes>
-        </Router>
+        </Router> */}
+       <EventsForm onSave={handleSave}/>
+      
       </div>
     </>
   )
+
 }
+
+
+
